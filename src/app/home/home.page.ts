@@ -17,15 +17,15 @@ export class HomePage {
     });
 
     constructor(private http: HttpClient, 
-        public platform: Platform, 
-        private nativeHttp: HTTP, 
-        private loadingCtrl: LoadingController) { }
+                public platform: Platform,
+                private nativeHttp: HTTP, 
+                private loadingCtrl: LoadingController) { }
 
     async testApi() {
-        if(this.platform.is('cordova') === true) {
-            let loading = await this.loadingCtrl.create();
+        if (this.platform.is('cordova') === true) {
+            const loading = await this.loadingCtrl.create();
             await loading.present();
-            let nativeCall = this.nativeHttp.get("http://192.168.100.24:8080/hello", {}, {
+            const nativeCall = this.nativeHttp.get('http://192.168.100.24:8080/hello', {}, {
                 'Content-Type': 'application/json'
             });
 
@@ -35,9 +35,8 @@ export class HomePage {
             .subscribe(data => {
                 console.log(data);
             })
-        }
-        else {
-            this.http.get("http://localhost:8080/hello").subscribe(res => { console.log(res) });
+        } else {
+            this.http.get('http://localhost:8080/hello').subscribe(res => { console.log(res) });
         }
     }
 
