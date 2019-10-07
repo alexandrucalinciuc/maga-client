@@ -4,6 +4,7 @@ import { Platform, LoadingController } from '@ionic/angular';
 import { HTTP } from '@ionic-native/http/ngx';
 import { finalize } from 'rxjs/operators';
 import { from } from 'rxjs';
+import { ApiLocationService } from '../services/api-location.service';
 
 @Component({
     selector: 'app-home',
@@ -16,27 +17,28 @@ export class HomePage {
         'Content-Type': 'application/json'
     });
 
-    constructor(private http: HttpClient, 
+    constructor(private http: HttpClient,
                 public platform: Platform,
-                private nativeHttp: HTTP, 
-                private loadingCtrl: LoadingController) { }
+                private nativeHttp: HTTP,
+                private loadingCtrl: LoadingController,
+                private apiLocationService: ApiLocationService) { }
 
     async testApi() {
         if (this.platform.is('cordova') === true) {
             const loading = await this.loadingCtrl.create();
             await loading.present();
-            const nativeCall = this.nativeHttp.get('http://192.168.100.24:8080/hello', {}, {
+            const nativeCall = this.nativeHttp.get(this.apiLocationService.apiLocation + '/hello', {}, {
                 'Content-Type': 'application/json'
             });
 
             from(nativeCall).pipe(
                 finalize(() => loading.dismiss())
             )
-            .subscribe(data => {
-                console.log(data);
-            })
+                .subscribe(data => {
+                    console.log(data);
+                });
         } else {
-            this.http.get('http://localhost:8080/hello').subscribe(res => { console.log(res) });
+            this.http.get(this.apiLocationService.apiLocation + '/hello').subscribe(res => { console.log(res) });
         }
     }
 

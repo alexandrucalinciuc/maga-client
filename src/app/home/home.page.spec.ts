@@ -2,23 +2,31 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { IonicModule } from '@ionic/angular';
 
 import { HomePage } from './home.page';
+import { HttpClientModule } from '@angular/common/http';
+import { HTTP } from '@ionic-native/http/ngx';
 
 describe('HomePage', () => {
-  let component: HomePage;
-  let fixture: ComponentFixture<HomePage>;
+    let component: HomePage;
+    let fixture: ComponentFixture<HomePage>;
 
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      declarations: [HomePage],
-      imports: [IonicModule.forRoot()]
-    }).compileComponents();
+    beforeEach(async(() => {
+        TestBed.configureTestingModule({
+            declarations: [HomePage],
+            imports: [
+                IonicModule.forRoot(),
+                HttpClientModule
+            ],
+            providers: [
+                HTTP
+            ]
+        }).compileComponents();
 
-    fixture = TestBed.createComponent(HomePage);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  }));
+        fixture = TestBed.createComponent(HomePage);
+        component = fixture.componentInstance;
+        fixture.detectChanges();
+    }));
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
+    it('should create', () => {
+        expect(component).toBeTruthy();
+    });
 });
