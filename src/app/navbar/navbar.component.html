@@ -1,3 +1,19 @@
-<div id='nav-container'>
-    
-</div>
+<ion-header>
+    <ion-toolbar>
+        <ion-buttons slot="start" *ngIf='mobile'>
+            <ion-menu-button></ion-menu-button>
+        </ion-buttons>
+        <ion-grid>
+            <ion-row class="ion-justify-content-around">
+                <ion-button fill='clear' expand='full' color="dark" *ngIf='!mobile' class='navbar-button active'>Acasă</ion-button>
+                <ion-button fill='clear' expand='full' color="dark" *ngIf='!mobile' class='navbar-button'>Invitați</ion-button>
+                <ion-button fill='clear' expand='full' color="dark" *ngIf='!mobile' class='navbar-button'>Cursuri</ion-button>
+                <ion-button fill='clear' expand='full' color="dark" *ngIf='!mobile' class='navbar-button'>Conferințe</ion-button>
+                <ion-button fill='clear' expand='full' color="dark" *ngIf='!mobile' class='navbar-button'>Instructori</ion-button>
+                <ion-button fill='clear' expand='full' color="dark" *ngIf='!mobile' class='navbar-button'>Sponsori</ion-button>
+                <ion-button fill='clear' expand='full' color="dark" *ngIf='!mobile' class='navbar-button'>Contact</ion-button>
+                <ion-button fill='clear' expand='full' color="dark" *ngIf='!mobile' class='navbar-button'>Login</ion-button>
+            </ion-row>
+        </ion-grid>
+    </ion-toolbar>
+</ion-header>

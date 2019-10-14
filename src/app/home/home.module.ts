@@ -7,6 +7,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { HTTP } from '@ionic-native/http/ngx';
 
 import { HomePage } from './home.page';
+import { NavbarComponent } from '../navbar/navbar.component'
 
 @NgModule({
     imports: [
@@ -22,6 +23,9 @@ import { HomePage } from './home.page';
         ])
     ],
     providers: [HTTP],
-    declarations: [HomePage]
+    declarations: [
+        HomePage,
+        NavbarComponent
+    ]
 })
 export class HomePageModule { }

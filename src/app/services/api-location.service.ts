@@ -6,7 +6,7 @@ import { Injectable } from '@angular/core';
 export class ApiLocationService {
 
     // tslint:disable-next-line: variable-name
-    private _ip = '192.168.0.57';
+    private _ip = '172.31.31.162';
     // tslint:disable-next-line: variable-name
     private _apiLocation = '';
 
